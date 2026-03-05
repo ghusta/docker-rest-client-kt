@@ -28,13 +28,12 @@ fun main() {
         .addLast(KotlinJsonAdapterFactory())
         .build()
 
-    val webProxy = Proxy(Proxy.Type.HTTP, InetSocketAddress("100.78.112.201", 8001))
     val noProxy = Proxy.NO_PROXY
 
     val okHttpClient = OkHttpClient.Builder()
         .connectTimeout(5, TimeUnit.SECONDS)
         .readTimeout(30, TimeUnit.SECONDS)
-        .proxy(webProxy)
+        .proxy(noProxy)
         .build()
 
     val retrofitMain = Retrofit.Builder()
