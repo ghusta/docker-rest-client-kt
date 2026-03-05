@@ -7,6 +7,7 @@ import fr.husta.android.dockersearch.docker.moshi.adapters.InstantJsonAdapter
 import fr.husta.android.dockersearch.docker.moshi.adapters.LocalDateJsonAdapter
 import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.net.InetSocketAddress
@@ -60,6 +61,8 @@ fun main() {
                 println("➡️ $formattedName -- $formattedSize -- $formattedDate -- variants: ${filteredVariants.size}")
             }
         }
+    } catch (e: HttpException) {
+        System.err.println("HttpException: " + e.message)
     } finally {
         okHttpClient.dispatcher.executorService.shutdown()
         okHttpClient.connectionPool.evictAll()
