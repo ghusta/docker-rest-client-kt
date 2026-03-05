@@ -55,7 +55,7 @@ fun main() {
             val dayOfMonthFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
             resultTags.results.forEach {
                 val formattedName = String.format("%-30s", it.name)
-                val formattedSize = String.format("%,d", it.fullSize)
+                val formattedSize = String.format("%,3d MB", it.fullSize shr 20)
                 val formattedDate = it.lastUpdated.atZone(ZoneId.systemDefault()).format(dayOfMonthFormatter)
                 val filteredVariants = it.imageVariants.filter { variant -> variant.architecture != "unknown" }
                 println("➡️ $formattedName -- $formattedSize -- $formattedDate -- variants: ${filteredVariants.size}")
