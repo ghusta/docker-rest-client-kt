@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "2.3.0"
+    id("com.google.devtools.ksp") version "2.3.5"
 }
 
 group = "org.example"
@@ -20,6 +21,9 @@ dependencies {
     implementation(libs.okhttp.core)
     implementation(libs.okhttp.logging)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
+    // see https://kotlinlang.org/docs/ksp-quickstart.html
+    ksp(libs.moshi.kotlin.codegen)
 
     testImplementation(kotlin("test"))
 
