@@ -22,6 +22,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
 
     testImplementation(kotlin("test"))
+
+    testImplementation(platform(libs.assertj.bom))
+    testImplementation(libs.assertj.core)
 }
 
 kotlin {
