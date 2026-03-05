@@ -16,6 +16,7 @@ dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
     implementation(libs.moshi.kotlin)
+    implementation(libs.moshi.adapters)
     implementation(libs.okhttp.core)
     implementation(libs.okhttp.logging)
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
