@@ -1,7 +1,6 @@
 package fr.husta.android.dockersearch.docker
 
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import fr.husta.android.dockersearch.docker.moshi.adapters.InstantJsonAdapter
 import fr.husta.android.dockersearch.docker.moshi.adapters.LocalDateJsonAdapter
@@ -10,15 +9,14 @@ import okhttp3.OkHttpClient
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.net.InetSocketAddress
 import java.net.Proxy
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.concurrent.TimeUnit
 
-const val BASE_URI = "https://index.docker.io"
-const val BASE_REGISTRY_URI = "https://registry.hub.docker.com"
+const val BASE_URI = "https://index.docker.io/"
+const val BASE_REGISTRY_URI = "https://registry.hub.docker.com/"
 
 fun main() {
 
