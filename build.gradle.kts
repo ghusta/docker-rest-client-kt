@@ -20,12 +20,14 @@ dependencies {
     implementation(libs.moshi.adapters)
     implementation(libs.okhttp.core)
     implementation(libs.okhttp.logging)
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+    implementation(platform(libs.kotlinx.coroutines.bom))
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
     // see https://kotlinlang.org/docs/ksp-quickstart.html
     ksp(libs.moshi.kotlin.codegen)
 
     testImplementation(kotlin("test"))
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test")
 
     testImplementation(platform("org.junit:junit-bom:5.14.4"))
     testImplementation("org.junit.jupiter:junit-jupiter")
