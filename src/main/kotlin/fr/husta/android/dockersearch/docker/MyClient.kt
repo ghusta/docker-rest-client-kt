@@ -61,6 +61,9 @@ fun main() {
         }
     } catch (e: HttpException) {
         System.err.println("HttpException: " + e.message)
+    } catch (e: Exception) {
+        // for example: Connect timed out
+        System.err.println("Exception: " + e.message)
     } finally {
         okHttpClient.dispatcher.executorService.shutdown()
         okHttpClient.connectionPool.evictAll()
