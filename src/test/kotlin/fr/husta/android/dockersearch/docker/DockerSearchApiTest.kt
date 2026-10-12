@@ -1,6 +1,7 @@
 package fr.husta.android.dockersearch.docker
 
 import com.squareup.moshi.Moshi
+import fr.husta.android.dockersearch.docker.model.comparator.SearchItemComparators
 import fr.husta.android.dockersearch.docker.moshi.adapters.InstantJsonAdapter
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
@@ -43,6 +44,22 @@ class DockerSearchApiTest {
     fun searchImages() = runTest {
         val searchImages = api.searchImages("postgres")
         assertThat(searchImages.results).hasSize(25)
+    }
+
+    @Test
+    fun searchImages_sorted() = runTest {
+        val searchImages = api.searchImages("postgres")
+        assertThat(searchImages.results).hasSizeGreaterThan(12)
+
+        val sortedItems = searchImages.results.sortedWith(SearchItemComparators.BY_OFFICIAL_AND_STARS)
+        assertThat(sortedItems[0].isOfficial).isTrue
+        assertThat(sortedItems[9].isOfficial).isFalse
+
+        val searchItem2 = sortedItems[1]
+        val searchItem3 = sortedItems[2]
+        val searchItem4 = sortedItems[3]
+        assertThat(searchItem2.starCount).isGreaterThanOrEqualTo(searchItem3.starCount)
+        assertThat(searchItem3.starCount).isGreaterThanOrEqualTo(searchItem4.starCount)
     }
 
     @Test
