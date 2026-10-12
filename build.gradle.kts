@@ -16,6 +16,7 @@ repositories {
 dependencies {
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.moshi)
+    implementation(libs.moshi)
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
     implementation(libs.okhttp.core)
