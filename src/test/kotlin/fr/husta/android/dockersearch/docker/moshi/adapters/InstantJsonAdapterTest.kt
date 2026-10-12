@@ -1,8 +1,8 @@
+package fr.husta.android.dockersearch.docker.moshi.adapters
+
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import fr.husta.android.dockersearch.docker.moshi.adapters.InstantJsonAdapter
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.time.Instant
 
