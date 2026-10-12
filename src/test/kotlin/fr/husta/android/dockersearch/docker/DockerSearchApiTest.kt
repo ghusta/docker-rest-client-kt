@@ -1,6 +1,7 @@
 package fr.husta.android.dockersearch.docker
 
 import com.squareup.moshi.Moshi
+import fr.husta.android.dockersearch.docker.moshi.adapters.InstantJsonAdapter
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import org.assertj.core.api.Assertions.assertThat
@@ -18,6 +19,7 @@ class DockerSearchApiTest {
     @BeforeEach
     fun setUp() {
         val moshi = Moshi.Builder()
+            .add(InstantJsonAdapter())
             .build()
 
         val noProxy = Proxy.NO_PROXY
@@ -41,6 +43,12 @@ class DockerSearchApiTest {
     fun searchImages() = runTest {
         val searchImages = api.searchImages("postgres")
         assertThat(searchImages.results).hasSize(25)
+    }
+
+    @Test
+    fun listTags() = runTest {
+        val tags = api.listTags("library/postgres")
+        assertThat(tags.results).hasSize(25)
     }
 
 }
