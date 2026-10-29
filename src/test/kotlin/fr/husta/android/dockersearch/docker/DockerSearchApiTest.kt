@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.net.Proxy
 import java.util.concurrent.TimeUnit
 
 class DockerSearchApiTest {
@@ -23,12 +22,10 @@ class DockerSearchApiTest {
             .add(InstantJsonAdapter())
             .build()
 
-        val noProxy = Proxy.NO_PROXY
-
         val okHttpClient = OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
-            .proxy(noProxy)
+            .proxy(null)
             .build()
 
         val retrofitMain = Retrofit.Builder()
