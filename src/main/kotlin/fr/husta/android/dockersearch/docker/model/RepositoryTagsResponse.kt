@@ -9,6 +9,12 @@ data class RepositoryTagsResponse(
     @Json(name = "count")
     val totalCount: Int,
 
+    @Json(name = "next")
+    val nextUrl: String?,
+
+    @Json(name = "previous")
+    val previousUrl: String?,
+
     @Json(name = "results")
     val results: List<RepositoryTag>
 
