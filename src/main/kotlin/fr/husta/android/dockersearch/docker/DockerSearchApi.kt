@@ -9,7 +9,10 @@ import retrofit2.http.Query
 interface DockerSearchApi {
 
     @GET("v1/search")
-    suspend fun searchImages(@Query("q") term: String, @Query("n") size: Int = 25): SearchItemsResponse
+    suspend fun searchImages(
+        @Query("q") term: String,
+        @Query("n") size: Int = 25
+    ): SearchItemsResponse
 
     @GET("v2/repositories/{repository}/tags")
     suspend fun listTags(
