@@ -61,10 +61,17 @@ class DockerSearchApiTest {
 
     @Test
     fun listTags() = runTest {
-        val tags = api.listTags("library/postgres")
-        assertThat(tags.results).hasSize(25)
-        assertThat(tags.previousUrl).isNull()
-        assertThat(tags.nextUrl).isNotNull()
+        // page #1
+        val tagsResponsePage1 = api.listTags("library/postgres")
+        assertThat(tagsResponsePage1.results).hasSize(25)
+        assertThat(tagsResponsePage1.previousUrl).isNull()
+        assertThat(tagsResponsePage1.nextUrl).isNotNull()
+
+        // page #2
+        val tagsResponsePage2 = api.listTags("library/postgres", 2)
+        assertThat(tagsResponsePage2.results).hasSize(25)
+        assertThat(tagsResponsePage2.previousUrl).isNotNull()
+        assertThat(tagsResponsePage2.nextUrl).isNotNull()
     }
 
 }
